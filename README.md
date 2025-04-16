@@ -6,9 +6,9 @@ Está API foi desenvolvida com o objetivo de facilitar o gerenciamento dos proje
 
 A API possue essas rotas para o seu funcionamento:
 
-POST - /create //cria um novo projeto
-GET - /project/:id //filtra o projeto pelo id
-GET - /projects //pega todos os projetos
+- POST - /create //cria um novo projeto
+- GET - /project/:id //filtra o projeto pelo id
+- GET - /projects //pega todos os projetos
 
 ## Estrutura de envio
 
