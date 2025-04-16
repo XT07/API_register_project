@@ -6,12 +6,12 @@ Está API foi desenvolvida com o objetivo de facilitar o gerenciamento dos proje
 
 A API possue essas rotas para o seu funcionamento:
 
-POST - /create //cria um novo projeto
-POST - /gen //gera um novo token com duração de 1h
-GET - /project/:id //filtra o projeto pelo id
-GET - /projects //pega todos os projetos
-PUT - /project //edita um projeto especifico com o id fornecido
-DELETE - /project //deleta o projeto especifico com o id fornecido
+- POST - /create //cria um novo projeto
+- POST - /gen //gera um novo token com duração de 1h
+- GET - /project/:id //filtra o projeto pelo id
+- GET - /projects //pega todos os projetos
+- PUT - /project //edita um projeto especifico com o id fornecido
+- DELETE - /project //deleta o projeto especifico com o id fornecido
 
 ## Estrutura de envio
 
