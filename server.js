@@ -142,7 +142,9 @@ app.put("/project", auth, (req, res) => {
     }
 });
 
-app.delete("/project/:id", auth, (req, res) => {
+app.delete("/project", auth, (req, res) => {
+    const id = req.body;
+
     try{
         const id = req.params.id;
 
@@ -150,7 +152,7 @@ app.delete("/project/:id", auth, (req, res) => {
     
         Storage.delete(index);
     
-        res.staatus(200).send(`Projeto deletado.`);
+        res.status(200).send(`Projeto deletado.`);
     }catch(e){
         res.status(400).send(`Erro ao tentar deletar o projeto: ${e}`);
     }
@@ -162,6 +164,4 @@ app.post("/gen", (req, res) => {
     res.json(token);
 });
 
-app.listen(8080, () => {
-    console.log("API rodando");
-});
+app.listen(8080, () => {});
