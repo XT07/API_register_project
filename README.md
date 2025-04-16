@@ -20,7 +20,7 @@ Estrtutura:
     "name": "", //nome do projeto
     "previewDate": "", //descrição do projeto
     "description": "", //dia que o projeto começou
-    "startDate": "", //previsão de finalizar
+    "startDate": "", //previsão para o termino do peojeto
     "finishedDate": "", //dia que finalizou
     "status": "" //status de andamento do projeto
 }
