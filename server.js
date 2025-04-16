@@ -142,9 +142,7 @@ app.put("/project", auth, (req, res) => {
     }
 });
 
-app.delete("/project", auth, (req, res) => {
-    const id = req.body;
-
+app.delete("/project/:id", auth, (req, res) => {
     try{
         const id = req.params.id;
 
@@ -164,4 +162,6 @@ app.post("/gen", (req, res) => {
     res.json(token);
 });
 
-app.listen(8080, () => {});
+app.listen(8080, () => {
+    console.log(`API rodando`);
+});
