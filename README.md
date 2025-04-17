@@ -1,49 +1,75 @@
-# API para registro de projetos ou relacionados
+# 📦 API de Registro de Projetos
 
-Está API foi desenvolvida com o objetivo de facilitar o gerenciamento dos projetos ou relacionados, a API utiliza o jsonwebtoken para fazer as autenticações de usuário. A API ainda não foi hospedada então para poder testar clone o repositório para o seu proṕio computador.
+Esta API foi desenvolvida com o objetivo de facilitar o gerenciamento de projetos (ou itens relacionados). A autenticação é feita utilizando **JWT (jsonwebtoken)**.
 
-## Rotas
+> ⚠️ **Atenção:** Esta API ainda **não está hospedada**. Para testá-la, clone o repositório e rode localmente.
 
-A API possue essas rotas para o seu funcionamento:
+---
 
-- POST - /create //cria um novo projeto
-- POST - /gen //gera um novo token com duração de 1h
-- GET - /project/id //filtra o projeto pelo id
-- GET - /projects //pega todos os projetos
-- PUT - /project //edita um projeto especifico com o id fornecido
-- DELETE - /project/id //deleta o projeto especifico com o id fornecido
+## 🔗 Rotas disponíveis
 
-## Estrutura de envio
+| Método | Rota             | Descrição                              |
+|--------|------------------|----------------------------------------|
+| POST   | `/create`        | Cria um novo projeto                   |
+| POST   | `/gen`           | Gera um token JWT válido por 1 hora   |
+| GET    | `/project/:id`   | Retorna um projeto específico por ID   |
+| GET    | `/projects`      | Retorna todos os projetos cadastrados |
+| PUT    | `/project`       | Edita um projeto com base no ID enviado no corpo da requisição       |
+| DELETE | `/project/:id`   | Deleta um projeto específico por ID    |
 
-As rotas receptoras de dados recebem os dados e formato JSON.
-Estrtutura:
+---
 
-```
+## 📤 Estrutura de envio (JSON)
+
+As rotas que recebem dados esperam o seguinte formato:
+
+```json
 {
-    "name": "", //nome do projeto
-    "previewDate": "", //descrição do projeto
-    "description": "", //dia que o projeto começou
-    "startDate": "", //previsão para o termino do peojeto
-    "finishedDate": "", //dia que finalizou
-    "status": "" //status de andamento do projeto
+  "name": "Nome do projeto",
+  "previewDate": "Previsão de término",
+  "description": "Descrição do projeto",
+  "startDate": "Data de início",
+  "finishedDate": "Data de finalização",
+  "status": "Status atual do projeto",
+  "id": "apenas precio para a rota de edição"
 }
 ```
+✅ Todos os campos são obrigatórios e devem ser do tipo string.
+## 🛠️ Regras de edição
 
-Todos os campos tem que estar preenchdiso e tem que estar no tipo string, isso vlae para a rota de edição tambem. Mas se algum campo que possui valor for alterado para sem valor ele não será alterado e manterá o seu valor ou seja campos depois de definidos com ou sem valor não poderão ser alterados para campos sem valor pois a API foi configurada para não aceitar campos alterados para vazios depois de uma edição.
+  -  Campos com valores já definidos não podem ser alterados para vazios.
 
-## Retorno esperado da rotas create
+  -  Ao editar um projeto, se um campo for enviado vazio, ele não será alterado.
+
+  -  A API foi configurada para preservar dados válidos já cadastrados.
+
+## ✅ Exemplo de resposta da rota POST /create
 ```
 {
-    "name": "", //nome do projeto inserido
-    "previewDate": "", //descrição do projeto inserido
-    "description": "", //dia que o projeto começou inserido
-    "startDate": "", //previsão para o termino do peojeto inserido
-    "finishedDate": "", //dia que finalizou inserido
-    "status": "" //status de andamento do projeto inserido
-    "id": "" //id gerado pelo API
+  "name": "Projeto Exemplo",
+  "previewDate": "2025-12-01",
+  "description": "Descrição do projeto",
+  "startDate": "2025-10-01",
+  "finishedDate": "2025-12-20",
+  "status": "Em andamento",
+  "id": "abc123"
 }
 ```
-
-## Rota delete
-
-Apenas precisa do id do projeto para executar e deleção.
+## 🗑️ Rota DELETE
+Para deletar um projeto, basta enviar o ID do projeto na URL:
+```
+DELETE /project/abc123
+```
+## 🚀 Como rodar localmente
+1. Clone o repositório:
+```
+git clone https://github.com/XT07/API_register_project.git
+```
+2. Instale as dependências:
+```
+npm install
+```
+3. Inicie o servidor:
+```
+node server.js
+```
